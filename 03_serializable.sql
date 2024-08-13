@@ -41,4 +41,5 @@ INSERT INTO class_values (class, value) VALUES (1, 300);
 COMMIT;
 
 -- 2 console
-COMMIT;  -- Here we will get transaction error, lets try this example without SELECT's
+COMMIT;  -- Here we will get a transaction error, let's try this example without SELECT's
+ROLLBACK;

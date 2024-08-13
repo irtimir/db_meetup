@@ -1,4 +1,5 @@
 -- Schema
+
 CREATE TABLE IF NOT EXISTS "public"."accounts"
 (
     id      SERIAL PRIMARY KEY,
@@ -9,8 +10,8 @@ CREATE TABLE IF NOT EXISTS "public"."accounts"
 CREATE INDEX IF NOT EXISTS idx_btree
     ON "public"."accounts" USING btree (balance);
 
-CREATE UNIQUE INDEX IF NOT EXISTS idx_hash_unique_name
-    ON "public"."accounts" USING btree (name);
+CREATE INDEX IF NOT EXISTS idx_hash_unique_name
+    ON "public"."accounts" USING hash (name);
 
 
 CREATE TABLE IF NOT EXISTS "public"."class_values"
@@ -19,9 +20,7 @@ CREATE TABLE IF NOT EXISTS "public"."class_values"
     value integer
 );
 
-CREATE UNIQUE INDEX IF NOT EXISTS idx_hash_unique_class_values
-    ON "public"."class_values" USING btree (class, value);
-
+--
 
 -- Test data
 
@@ -36,3 +35,5 @@ VALUES (1, 10),
        (2, 100),
        (2, 200)
 ON CONFLICT DO NOTHING;
+
+--
