@@ -13,13 +13,6 @@ CREATE INDEX IF NOT EXISTS idx_btree
 CREATE INDEX IF NOT EXISTS idx_hash_unique_name
     ON "public"."accounts" USING hash (name);
 
-
-CREATE TABLE IF NOT EXISTS "public"."class_values"
-(
-    class integer,
-    value integer
-);
-
 --
 
 -- Test data
@@ -27,13 +20,6 @@ CREATE TABLE IF NOT EXISTS "public"."class_values"
 INSERT INTO "public"."accounts" (name, balance)
 VALUES ('Alice', 1000.00),
        ('Bob', 2000.00)
-ON CONFLICT DO NOTHING;
-
-INSERT INTO "public"."class_values" (class, value)
-VALUES (1, 10),
-       (1, 20),
-       (2, 100),
-       (2, 200)
 ON CONFLICT DO NOTHING;
 
 --
